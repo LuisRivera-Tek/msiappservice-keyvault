@@ -95,6 +95,10 @@ I have created a laboratory that uses the identity headers to acquire an access 
             ![image](https://user-images.githubusercontent.com/77988455/121255721-fbb48d80-c868-11eb-8c39-518551189a0a.png)
             
    6)Test the app service by navigating to YourAppsName.azurewebsites.net/msi/keyvault. You should now see the data of your Key Vault secret!
+   
+
+      ![image](https://user-images.githubusercontent.com/77988455/121264467-65866480-c874-11eb-8c70-fee4fdad8e28.png)
+
 
 
 
