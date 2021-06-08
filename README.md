@@ -7,10 +7,14 @@ I have created a laboratory that uses the identity headers to acquire an access 
   
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLuisRivera-Tek%2Fmsiappservice-keyvault%2Fmsi-keyvault%2Ftemplate.json)
 
+**Note: If your using my app service to test MSI, make sure that you are using npm install && node --max-http-header-size=800000 server.js as your Node JS run command**
+
+
 1) Enable managed identity for your app service:
 
 
   ![image](https://user-images.githubusercontent.com/77988455/121253319-349f3300-c866-11eb-807d-275739d41807.png)
+  
 
 
 2) In our code, we will get the Key Vault URIs from environment variables. So first make sure to add the following app settings:
@@ -82,10 +86,10 @@ I have created a laboratory that uses the identity headers to acquire an access 
     
        ![image](https://user-images.githubusercontent.com/77988455/121255100-4255b800-c868-11eb-8923-a3750a8069cd.png)
        
-       5) Go to your Key Vault's access policies on Your_Key_Vault > Access policies and provide access to your Managed Identity's service principal. For system-assigned managed           identities, the name of the service principal is the same as your app service:
+   5) Go to your Key Vault's access policies on Your_Key_Vault > Access policies and provide access to your Managed Identity's service principal. For system-assigned managed           identities, the name of the service principal is the same as your app service:
             ![image](https://user-images.githubusercontent.com/77988455/121255721-fbb48d80-c868-11eb-8c39-518551189a0a.png)
             
-       7)Test the app service by navigating to YourAppsName.azurewebsites.net/msi/keyvault. You should now see the data of your Key Vault secret!
+   6)Test the app service by navigating to YourAppsName.azurewebsites.net/msi/keyvault. You should now see the data of your Key Vault secret!
 
 
 
