@@ -3,8 +3,8 @@ const app = express();
 const port = process.env.PORT;
 var database_server= process.env.MSI_DATABASE_SERVER
 var database= process.env.MSI_DATABASE
-var keyvault_uri=process.env.KEYVAULT_URI
-var keyvault_secret_uri= process.env.KEYVAULT_SECRET_URI
+var keyvault_uri=process.env.KEYVAULT_URL
+var keyvault_secret_uri= process.env.KEYVAULT_SECRET_URL
 const request = require('request');
 const sql = require('mssql');
 
