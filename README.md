@@ -39,8 +39,8 @@ I have created a laboratory that uses the identity headers to acquire an access 
 
      ![image](https://user-images.githubusercontent.com/77988455/121253467-60bab400-c866-11eb-9fe3-fbe16a72d172.png)
 
-4) Now, we will use will make a call to the identity_endpoint and pass identity_header in the request. In this case I am using the npm library called "request".
-   After acquiring the access token, we will send another http request to keyvault_secret_uri and pass the access token as bearer token in an Authorization Headers:
+4) Now, we will make a call to the identity_endpoint and pass identity_header in the request. In this case I am using the npm library called "request".
+   After acquiring the access token, we will send another http request to keyvault_secret_uri and pass the access token as bearer token in an Authorization Header:
    
          request(options, function (error, response, body) {
          
