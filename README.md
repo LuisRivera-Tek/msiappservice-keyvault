@@ -29,7 +29,7 @@ I have created a laboratory that uses the identity headers to acquire an access 
 
         var keyvault_secret_uri= process.env.KEYVAULT_SECRET_URL
 
-    ![image](https://user-images.githubusercontent.com/77988455/121253057-e8ec8980-c865-11eb-8b10-2bb80bf91776.png)
+    ![image](https://user-images.githubusercontent.com/77988455/121266832-7042f880-c878-11eb-8bc0-36d4dd01468c.png)
 
 3) Now, we need to get the Identity headers:
 
