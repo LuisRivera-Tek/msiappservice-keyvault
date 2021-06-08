@@ -7,14 +7,30 @@ var keyvault_uri=process.env.KEYVAULT_URI
 var keyvault_secret_uri= process.env.KEYVAULT_SECRET_URI
 const request = require('request');
 const sql = require('mssql');
+const sqlConfig = {
+  database: database,
+  server: database_server,
+  pool: {
+    max: 10,
+    min: 0,
+    idleTimeoutMillis: 30000
+  },
+  options: {
+    encrypt: true, // for azure
+    trustServerCertificate: false, // change to true for local dev / self-signed certs
+  },
+  authentication:{
+    type:"azure-active-directory-msi-app-service"
+  }
+
+}
 
 
 app.get('/', function (req, res) {
-  res.send('Welcome to Luis Rivera MSI Demo! To print all the identity headers naviagte to /msi/headers. To get an access token for Key Vault please go to /msi/keyvault/accesstoken.To get data from Key Vault using MSI please go to /msi/')
+  res.send('Welcome to Luis Rivera MSI Demo! To print all the identity headers naviagte to /msi/headers. To get an access token for Key Vault please go to /msi/keyvault/accesstoken.To get a certificate from Key Vault please go to /msi/keyvault. To print data from my Azure SQL database please go to /msi/AzureSQL')
 });
 
-//Print the MSI headers
-
+// Print the Identity Headers
 app.get('/msi/headers', function (req, res) {
 	
 var identity_header= process.env.IDENTITY_HEADER;
@@ -28,73 +44,24 @@ var identity_endpoint= process.env.IDENTITY_ENDPOINT;
   })
 });
 
+//Connect to AZure SQL using Managed Service Identity
+  app.get('/msi/AzureSQL', function (req, res) {
 
-//Listen for requests  on /msi/keyvault/accesstoken and send a request to the identity endpoint with the X-IDENTITY-HEADER header to obatin and print the access token for key vault
-app.get('/msi/keyvault/accesstoken', function (req, res) {
-var msi_response="Empty";
-var identity_header= process.env.IDENTITY_HEADER;
-var identity_endpoint= process.env.IDENTITY_ENDPOINT +"?resource="+keyvault_uri;
-	var options = {
-  url: process.env.IDENTITY_ENDPOINT +"?resource="+keyvault_uri,
-  headers: {
-    'X-IDENTITY-HEADER': identity_header
-  }
-  
-}
-request(options, function (error, response, body) {
-  console.error('error:', error); 
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); 
-  res.send(response);
-  
-});
-	
-	
-  
-});
-// Get an access token like before and use it to get a resource from key vault
-app.get('/msi/keyvault', function (req, res) {
-  var identity_header= process.env.IDENTITY_HEADER;
-  var identity_endpoint= process.env.IDENTITY_ENDPOINT +"?resource="+keyvault_uri;
-    var options = {
-    url: process.env.IDENTITY_ENDPOINT +"?resource="+keyvault_uri,
-    headers: {
-      'X-IDENTITY-HEADER': identity_header
+    async function ConnectToSQL ()  {
+        try {
+            await sql.connect(sqlConfig)
+            const result = await sql.query`select * from dbo.Songs`
+            console.dir(result)
+            res.send(result)
+          
+        } catch (err) {
+            console.log("Cannot connect")
+            console.log(err)
+            res.send(err)
+        }
     }
     
-  }
-  request(options, function (error, response, body) {
-    console.error('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); 
-    var jsonBody= JSON.parse(body);
-    var access_token= jsonBody.access_token;
-    var bearer_token="Bearer "+access_token;
-
-    var options2 = {
-      url: keyvault_secret_uri,
-      headers: {
-        'Authorization': bearer_token
-      }
-    }
-  
-    request(options2, function (error2, response2, body2) {
-      console.error('error:', error2); 
-      console.log('statusCode:', response2 && response2.statusCode); // Print the response status code if a response was received
-      console.log('body:', body2); 
-      res.send(body2);
-      
-    });
-    
-    
+    ConnectToSQL();
   });
-
-  
-    
-    
-    
-  });
-
-
    
 app.listen(port);
