@@ -18,6 +18,9 @@ I have created a laboratory that uses the identity headers to acquire an access 
 
 
 2) In our code, we will get the Key Vault URIs from environment variables. So first make sure to add the following app settings:
+
+    **Note: Make sure to specify the api-version at the end of your key vault secret's URL. In my case I am using ?api-version=2016-10-01**
+    
     ![image](https://user-images.githubusercontent.com/77988455/121252799-a75bde80-c865-11eb-81b2-7a27875ca44c.png)
 
     Now we get the environment variables in code:
