@@ -10,7 +10,7 @@ const sql = require('mssql');
 
 
 app.get('/', function (req, res) {
-  res.send('Welcome to Luis Rivera MSI Demo! To print all the identity headers naviagte to /msi/headers. To get an access token for Key Vault please go to /msi/keyvault/accesstoken.To get data from Key Vault using MSI please go to /msi/')
+  res.send('Welcome to Luis Rivera MSI Demo! To print all the identity headers naviagte to /msi/headers. To get an access token for Key Vault please go to /msi/keyvault/accesstoken.To get data from Key Vault using MSI please go to /msi/keyvault')
 });
 
 //Print the MSI headers
