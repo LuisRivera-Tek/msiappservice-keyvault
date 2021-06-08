@@ -88,7 +88,8 @@ I have created a laboratory that uses the identity headers to acquire an access 
         });
     
        ![image](https://user-images.githubusercontent.com/77988455/121255100-4255b800-c868-11eb-8923-a3750a8069cd.png)
-       
+     
+     
    5) Go to your Key Vault's access policies on Your_Key_Vault > Access policies and provide access to your Managed Identity's service principal. For system-assigned managed           identities, the name of the service principal is the same as your app service:
             ![image](https://user-images.githubusercontent.com/77988455/121255721-fbb48d80-c868-11eb-8c39-518551189a0a.png)
             
