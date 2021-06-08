@@ -21,13 +21,13 @@ I have created a laboratory that uses the identity headers to acquire an access 
 
     **Note: Make sure to specify the api-version at the end of your key vault secret's URL. In my case I am using ?api-version=2016-10-01**
     
-    ![image](https://user-images.githubusercontent.com/77988455/121252799-a75bde80-c865-11eb-81b2-7a27875ca44c.png)
+    ![image](https://user-images.githubusercontent.com/77988455/121261330-d8411100-c86f-11eb-8254-6f938ceff709.png)
 
     Now we get the environment variables in code:
   
-        var keyvault_uri=process.env.KEYVAULT_URI
+        var keyvault_uri=process.env.KEYVAULT_URL
 
-        var keyvault_secret_uri= process.env.KEYVAULT_SECRET_URI
+        var keyvault_secret_uri= process.env.KEYVAULT_SECRET_URL
 
     ![image](https://user-images.githubusercontent.com/77988455/121253057-e8ec8980-c865-11eb-8b10-2bb80bf91776.png)
 
