@@ -21,7 +21,7 @@ I have created a laboratory that uses the identity headers to acquire an access 
 
     **Note: Make sure to specify the api-version at the end of your key vault secret's URL. In my case I am using ?api-version=2016-10-01**
     
-    ![image](https://user-images.githubusercontent.com/77988455/121261330-d8411100-c86f-11eb-8254-6f938ceff709.png)
+    ![image](https://user-images.githubusercontent.com/77988455/121289348-03dcef00-c8a2-11eb-86c0-52d1bfeed69b.png)
 
     Now we get the environment variables in code:
   
