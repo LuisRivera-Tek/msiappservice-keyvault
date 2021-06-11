@@ -7,7 +7,7 @@ I have created a laboratory that uses the identity headers to acquire an access 
   
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FLuisRivera-Tek%2Fmsiappservice-keyvault%2Fmsi-keyvault%2Ftemplate.json)
 
-**Note: If you're using my app service to test MSI, make sure that you are using npm install && node --max-http-header-size=800000 server.js as your Node JS run command**
+
 
 
 1) Enable managed identity for your app service:
