@@ -31,7 +31,7 @@ I have created a laboratory that uses the identity headers to acquire an access 
 
     ![image](https://user-images.githubusercontent.com/77988455/121266832-7042f880-c878-11eb-8bc0-36d4dd01468c.png)
 
-3) Now, we need to get the Identity headers:
+3) Now, we need to get the Identity environment variables:
 
         var identity_header= process.env.IDENTITY_HEADER;
 
