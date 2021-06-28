@@ -42,6 +42,13 @@ I have created a laboratory that uses the identity headers to acquire an access 
 4) Now, we will make a call to the identity_endpoint and pass identity_header in the request. In this case I am using the npm library called "request".
    After acquiring the access token, we will send another http request to keyvault_secret_uri and pass the access token as bearer token in an Authorization Header:
    
+         var options = {
+        url: process.env.IDENTITY_ENDPOINT +"?resource="+keyvault_uri,
+        headers: {
+        'X-IDENTITY-HEADER': identity_header
+        }
+  
+        }
          request(options, function (error, response, body) {
          
          console.error('error:', error); // Print the error if one occurred
